@@ -1,0 +1,14 @@
+.container {
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+p{
+    color: white;
+}
