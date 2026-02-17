@@ -1,8 +1,686 @@
-.wrapper {
+.section {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background:
+        radial-gradient(800px 320px at 30% 0%, var(--accent), transparent 60%),
+        var(--surface);
+    backdrop-filter: blur(10px);
+}
+
+.topRow {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    background: #000;
-    padding: 20px;
-    border-radius: 10px;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--text);
+}
+
+.sub {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.telemetry {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.teleCard {
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    min-width: 120px;
+}
+
+.teleK {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.teleV {
+    margin-top: 6px;
+    font-weight: 900;
+    color: var(--accentText);
+}
+
+.search {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.input {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+.btn {
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--accentBorder);
+    background: var(--accent);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.ratingBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.ratingLabel {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.range {
+    width: 140px;
+}
+
+.ratingValue {
+    font-weight: 900;
+    color: var(--accentText);
+}
+
+.metaRow {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--muted);
+}
+
+.pager {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btnGhost {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.btnGhost:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pageInfo {
+    min-width: 64px;
+    text-align: center;
+}
+
+.grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+@media (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.cardWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cardActions {
+    display: flex;
+    gap: 8px;
+}
+
+.smallBtn {
+    flex: 1;
+    padding: 10px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.smallBtn:hover {
+    border-color: var(--accentBorder);
+}
+
+.trending,
+.notes {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.trTitle {
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.trItem,
+.noteItem {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    opacity: 0.82;
+    margin-top: 8px;
+}
+
+/* modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: rgba(0, 0, 0, 0.65);
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+.modal {
+    width: min(860px, 100%);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+}
+
+.modalTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.modalTitle {
+    font-weight: 900;
+    color: var(--text);
+}
+
+.modalClose {
+    padding: 8px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.modalBody {
+    padding: 14px;
+}
+
+.state {
+    color: var(--muted);
+}
+
+.kv {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 8px 12px;
+}
+
+.k {
+    color: var(--muted);
+}
+
+.v {
+    color: var(--accentText);
+    font-weight: 800;
+}
+
+.overview {
+    margin-top: 12px;
+    color: var(--text);
+    opacity: 0.82;
+    line-height: 1.55;
+}
+
+.pill {
+    padding: 12px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.pill:hover {
+    border-color: var(--accentBorder);
+}
+
+/* modal right area */
+.modalRight {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.modalMinus {
+    padding: 8px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.modalMinus:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Task 4: Review Profile Card (like screenshot) */
+.reviewProfileCard {
+    margin-top: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.reviewAvatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 950;
+    color: var(--text);
+    background: var(--surface2);
+    border: 1px solid var(--accentBorder);
+}
+
+.reviewProfileMain {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.reviewNameRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reviewName {
+    font-weight: 950;
+    color: var(--text);
+}
+
+.reviewRole {
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.reviewAbout {
+    margin-top: 6px;
+    color: var(--text);
+    opacity: 0.85;
+    font-weight: 800;
+}
+
+/* Task 2: per-movie Notes */
+.notesBox {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.notesTitle {
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.noteRow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.noteInput {
+    flex: 1;
+    min-width: 220px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+.noteBtn {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--accentBorder);
+    background: var(--accent);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.noteBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.noteList {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.noteItem {
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+}
+
+.noteText {
+    color: var(--text);
+    opacity: 0.86;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+.noteTime {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.noteEmpty {
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+}
+
+/* Reviews area (Task 5) */
+.reviews {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.reviewsTitle {
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.reviewRow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.reviewInput {
+    flex: 1;
+    min-width: 220px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+}
+
+/* Task 5: hover/active controlled by state */
+.reviewBtn {
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--accentBorder);
+    background: var(--accent);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.reviewBtnHover {
+    transform: translateY(-1px);
+    border-color: var(--accentBorder);
+}
+
+.reviewBtnActive {
+    transform: scale(0.985);
+}
+
+.reviewBtnDisabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.reviewList {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reviewItem {
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+}
+
+.reviewMeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.reviewAuthor {
+    font-weight: 900;
+    color: var(--accentText);
+}
+
+.reviewTime {
+    opacity: 0.85;
+}
+
+.reviewText {
+    margin-top: 6px;
+    color: var(--text);
+    opacity: 0.86;
+    line-height: 1.5;
+}
+
+.reviewEmpty {
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+}
+
+.inlineReview {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 1100px;
+}
+
+.inlineHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.inlineTitle {
+    font-weight: 950;
+    color: var(--text);
+}
+
+.inlineSub {
+    margin-top: 6px;
+    color: var(--muted);
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.profileChip {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 950;
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--accentBorder);
+}
+
+.profileMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profileName {
+    font-weight: 950;
+    color: var(--text);
+}
+
+.profileRole {
+    font-weight: 800;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.inlineRow {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.textarea {
+    flex: 1;
+    min-width: 260px;
+    min-height: 92px;
+    resize: vertical;
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.primaryBtn {
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--accentBorder);
+    background: var(--accent);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 950;
+    min-width: 120px;
+}
+
+.primaryBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.inlineList {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

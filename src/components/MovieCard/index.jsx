@@ -1,25 +1,30 @@
 import styles from "./MovieCard.module.css";
 
-export default function MovieCard({ title, poster, releaseDate, rating }) {
+export default function MovieCard({ title, poster, releaseDate, rating, onOpen }) {
   return (
-    <div className={styles.card}>
-      <img
-        src={poster}
-        alt={title}
-        className={styles.poster}
-      />
+    <button className={styles.card} onClick={onOpen} type="button">
+      <div className={styles.posterWrap}>
+        {poster ? (
+          <img className={styles.poster} src={poster} alt={title} loading="lazy" />
+        ) : (
+          <div className={styles.posterFallback}>No poster</div>
+        )}
+      </div>
 
-      <div className={styles.info}>
-        <h3 className={styles.title}>{title}</h3>
+      <div className={styles.body}>
+        <div className={styles.title} title={title}>
+          {title}
+        </div>
 
-        <p className={styles.date}>
-          Release: <span>{releaseDate}</span>
-        </p>
+        <div className={styles.meta}>
+          <span>Release: {releaseDate}</span>
+        </div>
 
         <div className={styles.rating}>
-          ⭐ {rating}
+          <span className={styles.star}>★</span>
+          <span>{rating}</span>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
