@@ -1,8 +1,16 @@
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    background: #000;
-    padding: 20px;
-    border-radius: 10px;
+.content {
+  width: 100%;
+  overflow-x: hidden;          
 }
+
+.wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding: 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
