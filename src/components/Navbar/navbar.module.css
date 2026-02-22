@@ -1,5 +1,5 @@
 .container {
-    background-image: url('../../../public/background2.png');
+    background-image: url("../../../public/background2.png");
     background-size: cover;
     background-color: rgb(233, 142, 50);
     margin: 0;
@@ -10,10 +10,40 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .logo {
     width: 150px;
     margin: 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin: 6px 0 12px;
+}
+
+.navBtn {
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.18);
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    backdrop-filter: blur(8px);
+    transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.navBtn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 190, 40, 0.55);
+    background: rgba(0, 0, 0, 0.26);
+}
+
+.navBtn:active {
+    transform: translateY(0px) scale(0.985);
+    background: rgba(0, 0, 0, 0.30);
 }

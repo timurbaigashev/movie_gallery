@@ -1,18 +1,19 @@
-import './App.css';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Movies from './sections/MovieSection';
-
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Movies from "./sections/MovieSection";
+import SearchSection from "./sections/SearchSection";
+import { MoviesProvider } from "./context/MoviesContext";
 
 function App() {
   return (
-    <div className="app">
+    <MoviesProvider>
       <Navbar />
-      <main className="content">
-        <Movies/>
+      <main>
+        <SearchSection />
+        <Movies />
       </main>
       <Footer />
-    </div>
+    </MoviesProvider>
   );
 }
 

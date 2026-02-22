@@ -1,14 +1,12 @@
 import styles from './footer.module.css';
 
-const Footer = () => {
+export default function Footer() {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <p>© 2026 BrazzersProduction. All rigts secured.</p>
-                <p>Designed by Jony Sins</p>
+                <p>© 2026 BrazzersProduction. All rights secured.</p>
+                <p>Designed by Johnny Sins</p>
             </div>
         </div>
     );
 };
-
-export default Footer;

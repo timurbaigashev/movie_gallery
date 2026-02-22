@@ -1,5 +1,5 @@
 .container {
-    
+    background: var(--surface)
 }
 
 .content {
@@ -9,6 +9,6 @@
     padding: 5px;
 }
 
-p{
-    color: white;
+p {
+    color: var(--text);
 }

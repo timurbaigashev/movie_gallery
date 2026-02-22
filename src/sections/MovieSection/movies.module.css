@@ -1,16 +1,107 @@
 .content {
-  width: 100%;
-  overflow-x: hidden;          
+    width: 100%;
+    background: #000;
+    border-radius: 20px;
+    overflow-x: hidden;
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 16px;
-  padding: 20px 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+
+    padding: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: thin;
+    scrollbar-color: #ff9800 #111;
 }
 
+
+.loadMore {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: #000;
+
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    padding: 14px 36px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.35);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+
+.loadMore:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.5);
+}
+
+
+.loadMore:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+}
+
+
+.loadMore:disabled {
+    background: #444;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+@media (max-width: 600px) {
+    .loadMore {
+        width: 90%;
+        padding: 14px 0;
+    }
+}
+
+
+.wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.wrapper::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 10px;
+}
+
+
+.wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #ff9800, #ff5722);
+    border-radius: 10px;
+}
+
+
+.wrapper::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #ff5722, #ff9800);
+}
+
+
+.movieCard {
+    flex: 0 0 auto;
+}

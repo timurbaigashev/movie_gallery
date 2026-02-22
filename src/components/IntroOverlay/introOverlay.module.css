@@ -1,0 +1,37 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    display: grid;
+    place-items: center;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fallback {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background:
+        radial-gradient(900px 450px at 20% 10%, var(--accentText), transparent),
+        radial-gradient(800px 420px at 90% 30%, var(--accent), transparent),
+        #000;
+}
+
+.brand {
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 0.6px;
+}
+
+.sub {
+    opacity: 0.7;
+    margin-top: 10px;
+}
