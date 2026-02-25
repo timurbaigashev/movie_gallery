@@ -1,34 +1,54 @@
 .container {
-    background-image: url("../../../public/background2.png");
-    background-size: cover;
-    background-color: rgb(233, 142, 50);
     margin: 0;
-    border-radius: 0 0 12px 12px;
+    border-radius: 0 0 18px 18px;
+    border-bottom: 1px solid var(--border);
+    background:
+        radial-gradient(900px 340px at 20% 0%, var(--accent), transparent 60%),
+        url("../../../public/background2.png") no-repeat,
+        var(--bg);
 }
 
 .content {
+    padding: 10px 14px 14px;
+}
+
+.top {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo {
     width: 150px;
-    margin: 10px;
+    margin: 8px;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
 }
 
 .actions {
     display: flex;
     gap: 10px;
-    margin: 6px 0 12px;
+    margin: 2px 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .navBtn {
+    text-decoration: none;
     padding: 8px 12px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(0, 0, 0, 0.18);
-    color: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--accentBorder);
+    background: var(--accent);
+    color: var(--text);
     cursor: pointer;
     font-size: 12px;
     font-weight: 800;
@@ -37,13 +57,30 @@
     transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
 }
 
+.navBtnActive {
+    background: var(--surface);
+    border-color: var(--accentBorder);
+}
+
 .navBtn:hover {
     transform: translateY(-1px);
-    border-color: rgba(255, 190, 40, 0.55);
-    background: rgba(0, 0, 0, 0.26);
+    border-color: var(--accentBorder);
+    background: var(--surface);
 }
 
 .navBtn:active {
     transform: translateY(0px) scale(0.985);
-    background: rgba(0, 0, 0, 0.30);
+    background: var(--surface2);
+}
+
+@media (min-width: 780px) {
+    .top {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .actions {
+        justify-content: flex-end;
+    }
 }
