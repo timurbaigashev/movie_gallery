@@ -7,6 +7,7 @@ import SearchSection from "./sections/SearchSection";
 import MoviesPage from "./pages/MoviesPage";
 import NotFound from "./pages/NotFound";
 import { MoviesProvider } from "./context/MoviesContext";
+import CommentPage from "./pages/CommentPage";
 
 function App() {
   const getInitialTheme = () => {
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SearchSection />} />
             <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/comments" element={<CommentPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

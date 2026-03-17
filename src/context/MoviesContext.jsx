@@ -52,7 +52,6 @@ export function MoviesProvider({ children }) {
     }
   }
 
-  // ─── Поиск (тоже без дублей) ─────────────────────────────────
   async function search(query) {
     if (!query?.trim()) {
       setSearchResults([]);

@@ -1,0 +1,29 @@
+.card {
+  background: #0d0d0d;
+  border: 1px solid #262626;
+  border-radius: 16px;
+  padding: 18px;
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  border-color: #b8860b;
+  transform: translateY(-4px);
+}
+
+.card h4 {
+  color: white;
+  margin-bottom: 6px;
+}
+
+.author {
+  color: #b8860b;
+  font-size: 13px;
+}
+
+.text {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 14px;
+}
