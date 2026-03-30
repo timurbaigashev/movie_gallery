@@ -29,6 +29,15 @@ const Navbar = ({ onOpenControl, theme, onToggleTheme }) => {
                             Movies
                         </NavLink>
 
+                        <NavLink
+                            to="/comments"
+                            className={({ isActive }) =>
+                                isActive ? `${styles.navBtn} ${styles.navBtnActive}` : styles.navBtn
+                            }
+                        >
+                            Comments
+                        </NavLink>
+
                         <button
                             type="button"
                             className={styles.navBtn}
