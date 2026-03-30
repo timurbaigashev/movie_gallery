@@ -87,3 +87,21 @@
   font-size: 14px;
   line-height: 1;
 }
+
+.commentBtn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  background: #b8860b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.commentBtn:hover {
+  background: #d4a017;
+  transform: translateY(-1px);
+}

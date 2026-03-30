@@ -1,0 +1,48 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: #0a0a0a;
+  width: 95%;
+  max-width: 780px;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 30px 25px 20px;
+  position: relative;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 18px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 34px;
+  color: #bbb;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 10;
+}
+
+.closeBtn:hover {
+  color: #ff5555;
+}
+
+.movieTitle {
+  color: #d4a017;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.4rem;
+}
