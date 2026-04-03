@@ -1,5 +1,6 @@
 import styles from "./navbar.module.css";
 import { NavLink } from "react-router-dom";
+import LogginButton from "../LogginButton";
 
 const Navbar = ({ onOpenControl, theme, onToggleTheme }) => {
     return (
@@ -38,6 +39,8 @@ const Navbar = ({ onOpenControl, theme, onToggleTheme }) => {
                         >
                             {theme === "dark" ? "Dark" : "Light"}
                         </button>
+
+                        {/* <LogginButton/> */}
                     </div>
                 </div>
             </div>

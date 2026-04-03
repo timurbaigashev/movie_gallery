@@ -1,0 +1,45 @@
+type User @table {
+  displayName: String!
+  email: String
+  photoUrl: String
+  createdAt: Timestamp!
+}
+
+type Movie @table {
+  title: String!
+  releaseYear: Int!
+  director: String!
+  genre: String
+  runtimeMinutes: Int
+  posterUrl: String
+  description: String
+  createdAt: Timestamp!
+}
+
+type CollectionItem @table {
+  user: User!
+  movie: Movie!
+  acquiredDate: Date!
+  format: String!
+  notes: String
+  location: String
+  createdAt: Timestamp!
+}
+
+type WatchedMovie @table {
+  user: User!
+  movie: Movie!
+  watchedDate: Date!
+  rating: Int
+  reviewText: String
+  createdAt: Timestamp!
+}
+
+type WishlistItem @table {
+  user: User!
+  movie: Movie!
+  desiredDate: Date!
+  priority: String
+  notes: String
+  createdAt: Timestamp!
+}
