@@ -1,4 +1,3 @@
-// CommentCard.jsx
 import { memo } from "react";
 import styles from "./commentCard.module.css";
 

@@ -16,8 +16,8 @@ export default function CommentsSection({ movieTitle = null }) {
   });
 
   // Текущие комментарии для отображения
-  const comments = movieTitle 
-    ? (allComments[movieTitle] || []) 
+  const comments = movieTitle
+    ? (allComments[movieTitle] || [])
     : Object.values(allComments).flat();
 
   // Сохраняем в localStorage
@@ -46,17 +46,17 @@ export default function CommentsSection({ movieTitle = null }) {
     <section className={styles.section}>
       {/* Показываем форму только если открыта модалка (есть movieTitle) */}
       {movieTitle && (
-        <CommentForm 
-          movieTitle={movieTitle} 
-          onAddComment={addComment} 
+        <CommentForm
+          movieTitle={movieTitle}
+          onAddComment={addComment}
         />
       )}
 
       <div className={styles.comments}>
         {sortedComments.length === 0 ? (
           <p style={{ color: "#aaa", textAlign: "center", padding: "30px 0" }}>
-            {movieTitle 
-              ? "Пока нет комментариев к этому фильму" 
+            {movieTitle
+              ? "Пока нет комментариев к этому фильму"
               : "Пока нет ни одного комментария"}
           </p>
         ) : (

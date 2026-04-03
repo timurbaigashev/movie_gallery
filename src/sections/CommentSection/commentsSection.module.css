@@ -1,9 +1,36 @@
-
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 .comments {
-  margin-top: 40px;
+  margin-top: 10px;
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+  padding: 40px 0;
+}
+
+.comments>* {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comments>*:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .comments {
+    gap: 14px;
+  }
 }
