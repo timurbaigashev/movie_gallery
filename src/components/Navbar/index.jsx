@@ -49,7 +49,7 @@ const Navbar = ({ onOpenControl, theme, onToggleTheme }) => {
                             {theme === "dark" ? "Dark" : "Light"}
                         </button>
 
-                        {/* <LogginButton/> */}
+                        <LogginButton/>
                     </div>
                 </div>
             </div>
