@@ -1,4 +1,3 @@
-// src/hooks/useFilter.js
 import { useMemo } from "react";
 
 export function useFilter(movies, filters) {
@@ -7,7 +6,6 @@ export function useFilter(movies, filters) {
 
     let filtered = [...movies];
 
-    // Поиск по названию
     if (filters.search) {
       const term = filters.search.toLowerCase();
       filtered = filtered.filter((movie) =>
@@ -15,12 +13,10 @@ export function useFilter(movies, filters) {
       );
     }
 
-    // Фильтр по году
     if (filters.year) {
       filtered = filtered.filter((movie) => movie.Year === filters.year);
     }
 
-    // Фильтр по минимальному рейтингу
     if (filters.minRating) {
       filtered = filtered.filter((movie) => {
         const rating = parseFloat(movie.imdbRating) || 0;
@@ -28,7 +24,6 @@ export function useFilter(movies, filters) {
       });
     }
 
-    // Сортировка
     if (filters.sortBy === "year") {
       filtered.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
     } else if (filters.sortBy === "rating") {

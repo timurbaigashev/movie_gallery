@@ -1,9 +1,8 @@
-// src/hooks/useModal.js
 import { useState } from "react";
 
 export function useModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [modalData, setModalData] = useState(null); // можно передавать любые данные (название фильма и т.д.)
+  const [modalData, setModalData] = useState(null);
 
   const openModal = (data = null) => {
     setModalData(data);

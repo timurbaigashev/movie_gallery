@@ -7,20 +7,17 @@ import styles from "./commentsSection.module.css";
 const ALL_COMMENTS_KEY = "all_movie_comments";
 
 export default function CommentsSection({ movieTitle = null }) {
-  // movieTitle = null → показываем ВСЕ комментарии (страница /comments)
-  // movieTitle = "Интерстеллар" → показываем только по этому фильму (модалка)
+
 
   const [allComments, setAllComments] = useState(() => {
     const saved = localStorage.getItem(ALL_COMMENTS_KEY);
     return saved ? JSON.parse(saved) : {};
   });
 
-  // Текущие комментарии для отображения
   const comments = movieTitle
     ? (allComments[movieTitle] || [])
     : Object.values(allComments).flat();
 
-  // Сохраняем в localStorage
   const saveToStorage = useCallback((updated) => {
     localStorage.setItem(ALL_COMMENTS_KEY, JSON.stringify(updated));
   }, []);
@@ -44,7 +41,6 @@ export default function CommentsSection({ movieTitle = null }) {
 
   return (
     <section className={styles.section}>
-      {/* Показываем форму только если открыта модалка (есть movieTitle) */}
       {movieTitle && (
         <CommentForm
           movieTitle={movieTitle}

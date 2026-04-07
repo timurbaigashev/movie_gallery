@@ -4,16 +4,14 @@ import { useForm } from "../../hooks/useForm";
 import styles from "./commentForm.module.css";
 
 export default function CommentForm({ movieTitle = "", onAddComment }) {
-  // Используем кастомный хук useForm
   const { values, handleChange, resetForm } = useForm({
     name: "",
-    movie: movieTitle,     // автоматически подставляем название фильма
+    movie: movieTitle,
     comment: "",
   });
 
   const [errors, setErrors] = useState({});
 
-  // ─── Автодополнение (оставляем как было) ─────────────────────────
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
@@ -52,7 +50,6 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
     return () => clearTimeout(timer);
   }, [values.movie]);
 
-  // ─── Валидация ───────────────────────────────────────────────────
   const validateField = (field, value) => {
     if (field === "name") {
       if (!value.trim()) return "Имя обязательно";
@@ -71,7 +68,6 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
     return "";
   };
 
-  // ─── Отправка формы ───────────────────────────────────────────────
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
@@ -93,7 +89,6 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
       date: new Date().toLocaleDateString("ru-RU"),
     };
 
-    // Передаём комментарий наверх (в CommentsSection)
     onAddComment(newComment);
 
     // Сброс формы
@@ -103,7 +98,6 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
     setShowSuggestions(false);
   };
 
-  // Выбор фильма из автодополнения
   const selectSuggestion = (title) => {
     handleChange({ target: { name: "movie", value: title } });
     setShowSuggestions(false);
