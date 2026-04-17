@@ -1,6 +1,6 @@
 // src/components/MovieCard/MovieCardHeader.jsx
 import styles from './MovieCard.module.css';
-import { useMovieCard } from '../../context/MovieCardContext';
+import { useMovieCard } from '../../context/MovieCardContext.tsx';
 
 export function MovieCardHeader() {
     const { movie } = useMovieCard();

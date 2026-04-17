@@ -1,26 +1,63 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchMovies, fetchMovieDetails, searchMovies } from "../api/moviesApi";
 
-const MoviesContext = createContext(null);
+//Types for API responses
+type ApiMovie = {
+  imdbID: string;
+  Title: string;
+  Poster: string;
+  Year: string;
+};
 
-export function MoviesProvider({ children }) {
-  const [movies, setMovies] = useState([]);           // популярные / основные
-  const [searchResults, setSearchResults] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+type ApiMovieDetails = {
+  imdbRating?: string;
+};
 
-  // ─── Загрузка популярных фильмов (без дублей) ────────────────
-  async function loadMovies() {
-    if (loading) return;   // защита от множественных кликов
+//Internal app type
+export type Movie = {
+  id: string;
+  title: string;
+  poster: string | null;
+  releaseDate: string;
+  rating: string;
+};
+
+//Context type
+type MoviesContextType = {
+  movies: Movie[];
+  searchResults: Movie[];
+  loading: boolean;
+  loadMovies: () => Promise<void>;
+  search: (query: string) => Promise<void>;
+};
+
+//Context
+const MoviesContext = createContext<MoviesContextType | undefined>(undefined);
+
+//Provider props
+type Props = {
+  children: React.ReactNode;
+};
+
+export function MoviesProvider({ children }: Props) {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  //Load movies
+  async function loadMovies(): Promise<void> {
+    if (loading) return;
 
     setLoading(true);
 
     try {
-      const data = await fetchMovies(page);
+      const data: ApiMovie[] = await fetchMovies(page);
 
-      const enriched = await Promise.all(
+      const enriched: Movie[] = await Promise.all(
         data.map(async (movie) => {
-          const details = await fetchMovieDetails(movie.imdbID);
+          const details: ApiMovieDetails = await fetchMovieDetails(movie.imdbID);
+
           return {
             id: movie.imdbID,
             title: movie.Title,
@@ -32,13 +69,9 @@ export function MoviesProvider({ children }) {
       );
 
       setMovies((prev) => {
-        // Самый надёжный способ убрать дубликаты
-        const movieMap = new Map();
+        const movieMap = new Map<string, Movie>();
 
-        // Сначала кладём старые
         prev.forEach((m) => movieMap.set(m.id, m));
-
-        // Новые перезаписывают, если уже были (или добавляются)
         enriched.forEach((m) => movieMap.set(m.id, m));
 
         return Array.from(movieMap.values());
@@ -52,20 +85,20 @@ export function MoviesProvider({ children }) {
     }
   }
 
-  async function search(query) {
+  //Search
+  async function search(query: string): Promise<void> {
     if (!query?.trim()) {
       setSearchResults([]);
       return;
     }
-
     setLoading(true);
-
     try {
-      const data = await searchMovies(query.trim());
+      const data: ApiMovie[] = await searchMovies(query.trim());
 
-      const enriched = await Promise.all(
+      const enriched: Movie[] = await Promise.all(
         data.map(async (movie) => {
-          const details = await fetchMovieDetails(movie.imdbID);
+          const details: ApiMovieDetails = await fetchMovieDetails(movie.imdbID);
+
           return {
             id: movie.imdbID,
             title: movie.Title,
@@ -76,7 +109,6 @@ export function MoviesProvider({ children }) {
         })
       );
 
-
       setSearchResults(enriched);
     } catch (err) {
       console.error("Ошибка поиска:", err);
@@ -86,8 +118,9 @@ export function MoviesProvider({ children }) {
     }
   }
 
+  //Init
   useEffect(() => {
-    loadMovies(); // первая страница при загрузке
+    loadMovies();
   }, []);
 
   return (
@@ -105,10 +138,13 @@ export function MoviesProvider({ children }) {
   );
 }
 
-export function useMovies() {
+//Hook
+export function useMovies(): MoviesContextType {
   const context = useContext(MoviesContext);
+
   if (!context) {
     throw new Error("useMovies должен использоваться внутри MoviesProvider");
   }
+
   return context;
 }

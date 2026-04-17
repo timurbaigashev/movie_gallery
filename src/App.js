@@ -12,7 +12,7 @@ import CommentPage from "./pages/CommentPage";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";   // ← добавили
 
-import { MoviesProvider } from "./context/MoviesContext";
+import { MoviesProvider } from "./context/MoviesContext.tsx";
 
 function App() {
   const getInitialTheme = () => {

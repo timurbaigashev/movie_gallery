@@ -3,9 +3,10 @@
     border-radius: 0 0 18px 18px;
     border-bottom: 1px solid var(--border);
     background:
-        radial-gradient(900px 340px at 20% 0%, var(--accent), transparent 60%),
-        url("../../../public/background2.png") no-repeat,
-        var(--bg);
+    radial-gradient(900px 340px at 20% 0%, var(--accent), transparent 60%),
+    url("../../../public/background2.png") no-repeat top center / cover,
+    var(--bg);
+    width: 100%;
 }
 
 .content {
