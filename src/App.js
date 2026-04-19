@@ -13,35 +13,19 @@ import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";   // ← добавили
 
 import { MoviesProvider } from "./context/MoviesContext.tsx";
+import {useThemeStore} from "./themeStore";
 
 function App() {
-  const getInitialTheme = () => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "light" || saved === "dark") return saved;
-    const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)")?.matches;
-    return prefersLight ? "light" : "dark";
-  };
-
-  const [theme, setTheme] = useState(getInitialTheme);
+  const theme = useThemeStore((state) => state.theme);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
   }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
-  const navbarProps = useMemo(
-    () => ({ theme, onToggleTheme: toggleTheme }),
-    [theme]
-  );
 
   return (
     <MoviesProvider>
       <BrowserRouter>
-        <Navbar {...navbarProps} />
+        <Navbar />
 
         <main>
           <Routes>

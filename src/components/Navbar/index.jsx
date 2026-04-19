@@ -1,8 +1,11 @@
 import styles from "./navbar.module.css";
 import { NavLink } from "react-router-dom";
 import LogginButton from "../LogginButton";
+import {useThemeStore} from "../../themeStore";
 
-const Navbar = ({ onOpenControl, theme, onToggleTheme }) => {
+const Navbar = () => {
+    const theme = useThemeStore((state) => state.theme);
+    const toggleTheme = useThemeStore((state) => state.toggleTheme);
     return (
         <div className={styles.container}>
             <div className={styles.content}>
@@ -42,7 +45,7 @@ const Navbar = ({ onOpenControl, theme, onToggleTheme }) => {
                         <button
                             type="button"
                             className={styles.navBtn}
-                            onClick={onToggleTheme}
+                            onClick={toggleTheme}
                             aria-label="Toggle theme"
                             title="Toggle theme"
                         >
