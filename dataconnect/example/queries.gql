@@ -1,0 +1,13 @@
+query AllMovies @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public.") {
+      movies {
+        id
+        title
+        director
+        releaseYear
+        genre
+        runtimeMinutes
+        posterUrl
+        description
+        createdAt
+      }
+    }

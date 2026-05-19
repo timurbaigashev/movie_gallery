@@ -1,0 +1,29 @@
+.page {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.header {
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background:
+        radial-gradient(800px 320px at 30% 0%, var(--accent), transparent 60%),
+        var(--surface);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 950;
+    color: var(--text);
+}
+
+.sub {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+}

@@ -1,30 +1,12 @@
-import styles from "./MovieCard.module.css";
+// src/components/MovieCard/index.jsx
+import MovieCard from './MovieCard';
+import { MovieCardHeader } from './MovieCardHeader';
+import { MovieCardBody } from './MovieCardBody';
+import { MovieCardFooter } from './MovieCardFooter';
 
-export default function MovieCard({ title, poster, releaseDate, rating, onOpen }) {
-  return (
-    <button className={styles.card} onClick={onOpen} type="button">
-      <div className={styles.posterWrap}>
-        {poster ? (
-          <img className={styles.poster} src={poster} alt={title} loading="lazy" />
-        ) : (
-          <div className={styles.posterFallback}>No poster</div>
-        )}
-      </div>
+MovieCard.Header = MovieCardHeader;
+MovieCard.Body = MovieCardBody;
+MovieCard.Footer = MovieCardFooter;
 
-      <div className={styles.body}>
-        <div className={styles.title} title={title}>
-          {title}
-        </div>
-
-        <div className={styles.meta}>
-          <span>Release: {releaseDate}</span>
-        </div>
-
-        <div className={styles.rating}>
-          <span className={styles.star}>★</span>
-          <span>{rating}</span>
-        </div>
-      </div>
-    </button>
-  );
-}
+export default MovieCard;
+export { MovieCardHeader, MovieCardBody, MovieCardFooter };

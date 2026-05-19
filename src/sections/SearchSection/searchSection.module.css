@@ -1,0 +1,47 @@
+.section {
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(800px 320px at 30% 0%, var(--accent), transparent 60%),
+    var(--surface);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.results {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accentBorder) transparent;
+}
+
+.results::-webkit-scrollbar {
+  height: 8px;
+}
+
+.results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.results::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(255, 183, 0, 0.35), rgba(255, 170, 0, 0.18));
+  border-radius: 10px;
+}
+
+.results::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, rgba(255, 183, 0, 0.55), rgba(255, 170, 0, 0.28));
+}

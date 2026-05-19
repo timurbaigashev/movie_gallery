@@ -1,12 +1,11 @@
 :root {
   --bg: #07070b;
-  --surface: rgba(0, 0, 0, 0.42);
-  --surface2: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.10);
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.62);
+  --surface: rgb(17, 18, 20);
+  --surface2: rgb(39, 40, 43);
+  --border: rgb(52, 53, 56);
+  --text: rgb(234, 235, 235);
+  --muted: rgb(168, 169, 170);
 
-  /* warm cinema accent */
   --accent: rgba(255, 170, 0, 0.18);
   --accentBorder: rgba(255, 183, 0, 0.28);
   --accentText: rgba(255, 205, 0, 0.92);
@@ -16,11 +15,11 @@
 
 [data-theme="light"] {
   --bg: #f5f3ee;
-  --surface: rgba(255, 255, 255, 0.78);
-  --surface2: rgba(0, 0, 0, 0.04);
-  --border: rgba(0, 0, 0, 0.10);
-  --text: rgba(15, 15, 18, 0.92);
-  --muted: rgba(15, 15, 18, 0.60);
+  --surface: rgb(203, 203, 204);
+  --surface2: rgb(163, 163, 163);
+  --border: rgb(27, 28, 31);
+  --text: rgb(16, 17, 20);
+  --muted: rgb(21, 21, 25);
 
   --accent: rgba(255, 170, 0, 0.22);
   --accentBorder: rgba(233, 142, 50, 0.35);
@@ -43,7 +42,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--bg);
-  color: var(--bg);
+  color: var(--text);
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px;
+}
+
+button {
+  font: inherit;
 }
 
 code {

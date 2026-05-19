@@ -1,0 +1,117 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "This is seed data and should only be run by authenticated users to initialize the database.") {
+  movie_insertMany(data: [
+    {
+      id: "6e2a8c7b-9c0d-4f1e-8a3b-2c1f0d9e8a7c",
+      title: "The Grand Budapest Hotel",
+      releaseYear: 2014,
+      director: "Wes Anderson",
+      genre: "Comedy-Drama",
+      runtimeMinutes: 100,
+      posterUrl: "https://example.com/grand_budapest_hotel.jpg",
+      description: "The adventures of Gustave H, a legendary concierge at a famous hotel from the interwar period, and Zero Moustafa, the lobby boy who becomes his most trusted friend.",
+      createdAt: "2024-01-01T10:00:00Z"
+    },
+    {
+      id: "f8d3e4c1-2b0a-4e5f-9d7c-1a8b6f5e4d3c",
+      title: "Interstellar",
+      releaseYear: 2014,
+      director: "Christopher Nolan",
+      genre: "Sci-Fi",
+      runtimeMinutes: 169,
+      posterUrl: "https://example.com/interstellar.jpg",
+      description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      createdAt: "2024-01-01T10:05:00Z"
+    },
+    {
+      id: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      title: "Pulp Fiction",
+      releaseYear: 1994,
+      director: "Quentin Tarantino",
+      genre: "Crime",
+      runtimeMinutes: 154,
+      posterUrl: "https://example.com/pulp_fiction.jpg",
+      description: "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+      createdAt: "2024-01-01T10:10:00Z"
+    }
+  ])
+  user_insertMany(data: [
+    {
+      id: "user1-uuid",
+      displayName: "Alice Smith",
+      email: "alice@example.com",
+      photoUrl: "https://example.com/alice.jpg",
+      createdAt: "2024-01-01T10:15:00Z"
+    },
+    {
+      id: "user2-uuid",
+      displayName: "Bob Johnson",
+      email: "bob@example.com",
+      photoUrl: "https://example.com/bob.jpg",
+      createdAt: "2024-01-01T10:20:00Z"
+    }
+  ])
+  watchedMovie_insertMany(data: [
+    {
+      userId: "user1-uuid",
+      movieId: "6e2a8c7b-9c0d-4f1e-8a3b-2c1f0d9e8a7c",
+      watchedDate: "2024-01-10",
+      rating: 9,
+      reviewText: "Absolutely loved it! The cinematography is stunning.",
+      createdAt: "2024-01-10T15:00:00Z"
+    },
+    {
+      userId: "user1-uuid",
+      movieId: "f8d3e4c1-2b0a-4e5f-9d7c-1a8b6f5e4d3c",
+      watchedDate: "2024-01-15",
+      rating: 10,
+      reviewText: "Mind-blowing! A true masterpiece of science fiction.",
+      createdAt: "2024-01-15T18:30:00Z"
+    },
+    {
+      userId: "user2-uuid",
+      movieId: "6e2a8c7b-9c0d-4f1e-8a3b-2c1f0d9e8a7c",
+      watchedDate: "2024-01-12",
+      rating: 8,
+      reviewText: "Very charming and visually unique. Wes Anderson at his best.",
+      createdAt: "2024-01-12T17:00:00Z"
+    }
+  ])
+  wishlistItem_insertMany(data: [
+    {
+      userId: "user1-uuid",
+      movieId: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      desiredDate: "2024-03-01",
+      priority: "High",
+      notes: "Heard great things about this classic.",
+      createdAt: "2024-02-01T09:00:00Z"
+    },
+    {
+      userId: "user2-uuid",
+      movieId: "f8d3e4c1-2b0a-4e5f-9d7c-1a8b6f5e4d3c",
+      desiredDate: "2024-04-15",
+      priority: "Medium",
+      notes: "Want to rewatch this on a big screen.",
+      createdAt: "2024-02-05T11:00:00Z"
+    }
+  ])
+  collectionItem_insertMany(data: [
+    {
+      userId: "user1-uuid",
+      movieId: "6e2a8c7b-9c0d-4f1e-8a3b-2c1f0d9e8a7c",
+      acquiredDate: "2023-12-25",
+      format: "Blu-ray",
+      notes: "Christmas gift",
+      location: "Living Room Shelf",
+      createdAt: "2023-12-25T12:00:00Z"
+    },
+    {
+      userId: "user2-uuid",
+      movieId: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      acquiredDate: "2024-01-05",
+      format: "DVD",
+      notes: "Found at a thrift store",
+      location: "Office Cabinet",
+      createdAt: "2024-01-05T14:00:00Z"
+    }
+  ])
+}

@@ -1,95 +1,56 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+// src/App.jsx
+import { useEffect, useMemo, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Navbar, Footer, IntroOverlay, ControlCenter } from "./components";
-import { MovieSection } from "./sections";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import SearchSection from "./sections/SearchSection";
+import MoviesPage from "./pages/MoviesPage";
+import NotFound from "./pages/NotFound";
+import CommentPage from "./pages/CommentPage";
 
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";   // ← добавили
 
-export default function App() {
-  // Task 6: global theme
-  const [theme, setTheme] = useState(() => localStorage.getItem("mg_theme") || "dark");
+import { MoviesProvider } from "./context/MoviesContext.tsx";
+import {useThemeStore} from "./themeStore";
 
-  // Intro overlay state
-  const [introDone, setIntroDone] = useState(false);
-
-  // Control Center
-  const [ccOpen, setCcOpen] = useState(false);
-
-  // Task 1: counter (watchlist)
-  const [watchCount, setWatchCount] = useState(0);
-
-  // Task 3: prefs
-  const [prefs, setPrefs] = useState({
-    autoplay: true,
-    subtitles: false,
-    hd: true,
-    notifications: false,
-  });
-
-  // Task 4: profile editor
-  const [profile, setProfile] = useState({
-    name: "Timur",
-    role: "Movie Explorer",
-    about: "Building a cinematic movie gallery.",
-  });
-
-  const LS_REVIEWS = "mg_reviews_by_movie_v1";
-
-  const [reviewsByMovie, setReviewsByMovie] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem(LS_REVIEWS)) || {};
-    } catch {
-      return {};
-    }
-  });
+function App() {
+  const theme = useThemeStore((state) => state.theme);
 
   useEffect(() => {
-    try {
-      localStorage.setItem(LS_REVIEWS, JSON.stringify(reviewsByMovie));
-    } catch { }
-  }, [reviewsByMovie]);
-
-  useEffect(() => {
-    localStorage.setItem("mg_theme", theme);
+    document.documentElement.dataset.theme = theme;
   }, [theme]);
 
-
   return (
-    <div className="appContainer" data-theme={theme}>
+    <MoviesProvider>
+      <BrowserRouter>
+        <Navbar />
 
-      {/* Intro Overlay plays first, site mounts underneath */}
-      <IntroOverlay open={!introDone} onDone={() => setIntroDone(true)} />
+        <main>
+          <Routes>
+            <Route path="/" element={<SearchSection />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/comments" element={<CommentPage />} />
 
-      <Navbar
-        onOpenControl={() => setCcOpen(true)}
-        theme={theme}
-        onToggleTheme={() => setTheme(t => (t === "dark" ? "light" : "dark"))}
-      />
+            {/* Защищённая страница */}
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
 
-      <main className={`appMain ${introDone ? "ready" : "preloading"}`}>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
 
-        <MovieSection
-          theme={theme}
-          prefs={prefs}
-          setPrefs={setPrefs}
-          watchCount={watchCount}
-          setWatchCount={setWatchCount}
-          profile={profile}
-          setProfile={setProfile}
-          reviewsByMovie={reviewsByMovie}
-          setReviewsByMovie={setReviewsByMovie}
-        />
-      </main>
-
-      <Footer />
-
-      <ControlCenter
-        open={ccOpen}
-        onClose={() => setCcOpen(false)}
-        profile={profile}
-        reviewsByMovie={reviewsByMovie}
-      />
-
-    </div>
+        <Footer />
+      </BrowserRouter>
+    </MoviesProvider>
   );
 }
+
+export default App;

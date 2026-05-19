@@ -1,0 +1,56 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle accent glow */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(circle at top left,
+      var(--accent),
+      transparent 60%);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accentBorder);
+  box-shadow: var(--shadow);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Заголовок (имя / фильм) */
+.card h4 {
+  color: var(--text);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Автор */
+.author {
+  color: var(--accentText);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+/* Текст комментария */
+.text {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
