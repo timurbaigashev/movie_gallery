@@ -21,7 +21,7 @@ export function useFetch(url) {
       try {
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(`Ошибка: ${response.status}`);
+          throw new Error(`Error: ${response.status}`);
         }
         const result = await response.json();
 

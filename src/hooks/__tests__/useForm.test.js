@@ -2,7 +2,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useForm } from '../useForm';
 
-describe('Задача 9: Тестирование гибридной формы (Controlled + Uncontrolled)', () => {
+describe('Тестирование гибридной формы (Controlled + Uncontrolled)', () => {
 
     test('управляет controlled полями через useState', () => {
         const TestComponent = () => {
@@ -43,20 +43,20 @@ describe('Задача 9: Тестирование гибридной формы
             return (
                 <form ref={formRef} onSubmit={handleSubmit(onSubmitMock)}>
                     <input name="username" defaultValue="testuser" data-testid="username" />
-                    <input name="comment" defaultValue="Отличный фильм!" data-testid="comment" />
-                    <button type="submit">Отправить</button>
+                    <input name="comment" defaultValue="Great movie!" data-testid="comment" />
+                    <button type="submit">Send</button>
                 </form>
             );
         };
 
         render(<TestComponent />);
 
-        fireEvent.click(screen.getByText('Отправить'));
+        fireEvent.click(screen.getByText('Send'));
 
         expect(onSubmitMock).toHaveBeenCalledWith(
             expect.objectContaining({
                 username: "testuser",
-                comment: "Отличный фильм!"
+                comment: "Great movie!"
             })
         );
     });

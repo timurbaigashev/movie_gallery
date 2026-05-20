@@ -41,7 +41,7 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
           setShowSuggestions(false);
         }
       } catch (err) {
-        console.error("Ошибка автодополнения:", err);
+        console.error("Autofill error:", err);
       } finally {
         setLoadingSuggestions(false);
       }
@@ -52,17 +52,17 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
 
   const validateField = (field, value) => {
     if (field === "name") {
-      if (!value.trim()) return "Имя обязательно";
-      if (value.trim().length < 2) return "Имя слишком короткое";
+      if (!value.trim()) return "Name is necessary";
+      if (value.trim().length < 2) return "Name is too short";
       return "";
     }
     if (field === "movie") {
-      if (!value.trim()) return "Название фильма обязательно";
+      if (!value.trim()) return "Movie title is necessary";
       return "";
     }
     if (field === "comment") {
-      if (!value.trim()) return "Комментарий обязателен";
-      if (value.trim().length < 10) return "Комментарий слишком короткий (минимум 10 символов)";
+      if (!value.trim()) return "Comment is necessary";
+      if (value.trim().length < 10) return "Comment is too short (10 characters min)";
       return "";
     }
     return "";
@@ -107,13 +107,13 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmitForm}>
-        <h2>Оставить комментарий</h2>
+        <h2>Comments</h2>
 
         <div className={styles["input-wrapper"]}>
           <input
             name="name"
             type="text"
-            placeholder="Ваше имя"
+            placeholder="Your name"
             value={values.name}
             onChange={handleChange}
           />
@@ -124,7 +124,7 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
           <input
             name="movie"
             type="text"
-            placeholder="Название фильма"
+            placeholder="Movie title"
             value={values.movie}
             onChange={handleChange}
             onFocus={() => values.movie.trim().length >= 2 && setShowSuggestions(true)}
@@ -135,7 +135,7 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
           {showSuggestions && (
             <ul className={styles.suggestions}>
               {loadingSuggestions ? (
-                <li className={styles.loading}>Загрузка...</li>
+                <li className={styles.loading}>Loading...</li>
               ) : suggestions.length > 0 ? (
                 suggestions.map((item) => (
                   <li
@@ -147,7 +147,7 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
                   </li>
                 ))
               ) : (
-                <li className={styles.noResults}>Ничего не найдено</li>
+                <li className={styles.noResults}>Nothing found</li>
               )}
             </ul>
           )}
@@ -156,14 +156,14 @@ export default function CommentForm({ movieTitle = "", onAddComment }) {
         <div className={styles["input-wrapper"]}>
           <textarea
             name="comment"
-            placeholder="Ваш комментарий..."
+            placeholder="Your comment..."
             value={values.comment}
             onChange={handleChange}
           />
           {errors.comment && <span className={styles.error}>{errors.comment}</span>}
         </div>
 
-        <button type="submit">Отправить комментарий</button>
+        <button type="submit">Leave a comment</button>
       </form>
     </div>
   );

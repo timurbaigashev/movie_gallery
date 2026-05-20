@@ -13,7 +13,7 @@ export default function CommentModal({ movieTitle, isOpen, onClose }) {
       >
         <button className={styles.closeBtn} onClick={onClose}>✕</button>
 
-        <h2>Комментарии к фильму</h2>
+        <h2>Comments for the movie</h2>
         <h3 className={styles.movieTitle}>{movieTitle}</h3>
 
         <CommentsSection movieTitle={movieTitle} />

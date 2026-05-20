@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { useFetch } from "../../../hooks/useFetch";
+//import { useFetch } from "../../../hooks/useFetch";
 import MovieSection from "../index";
 
 jest.mock("../../../hooks/useFetch", () => ({

@@ -9,7 +9,7 @@ const mockMovie = {
     rating: "8.8"
 };
 
-describe('Задача 8: Compound Components - MovieCard', () => {
+describe('Compound Components - MovieCard', () => {
 
     test('корректно рендерит все составные части карточки', () => {
         render(
@@ -23,7 +23,7 @@ describe('Задача 8: Compound Components - MovieCard', () => {
         expect(screen.getByText('Inception')).toBeInTheDocument();
         expect(screen.getByText('Release: 2010')).toBeInTheDocument();
         expect(screen.getByText('8.8')).toBeInTheDocument();
-        expect(screen.getByText(/Оставить комментарий/i)).toBeInTheDocument();
+        expect(screen.getByText(/Leave a comment/i)).toBeInTheDocument();
     });
 
     test('дочерние компоненты выбрасывают ошибку при использовании вне MovieCard', () => {

@@ -25,19 +25,17 @@ export default function Movies() {
         Title: movie.Title,
         Year: movie.Year,
         imdbRating: movie.imdbRating,
-        Poster: movie.Poster,
         poster: movie.Poster === "N/A"
           ? "https://via.placeholder.com/300x450?text=No+Poster"
           : movie.Poster,
       }));
-
       setAllMovies((prev) => {
         const existingIds = new Set(prev.map(m => m.imdbID));
         const uniqueNew = newMovies.filter(m => !existingIds.has(m.imdbID));
         return [...prev, ...uniqueNew];
       });
     }
-  }, [data, loading]);
+  }, [loading]);
 
   const handleCommentClick = (title) => {
     openModal({ title });
@@ -49,7 +47,7 @@ export default function Movies() {
     setTimeout(() => setIsLoadingMore(false), 400);
   };
 
-  if (error) return <p style={{ color: "red", textAlign: "center" }}>Ошибка: {error}</p>;
+  if (error) return <p style={{ color: "red", textAlign: "center" }}>Error: {error}</p>;
 
   return (
     <section className={styles.content}>
@@ -74,7 +72,7 @@ export default function Movies() {
 
       {(loading || isLoadingMore) && (
         <p style={{ textAlign: "center", margin: "30px 0" }}>
-          Загрузка фильмов...
+          Loading movies...
         </p>
       )}
 
@@ -83,7 +81,7 @@ export default function Movies() {
         onClick={handleLoadMore}
         disabled={loading || isLoadingMore}
       >
-        {loading || isLoadingMore ? "Загрузка..." : "Load more"}
+        {loading || isLoadingMore ? "Loading..." : "Load more"}
       </button>
 
       <CommentModal

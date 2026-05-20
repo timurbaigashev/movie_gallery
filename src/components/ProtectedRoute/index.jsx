@@ -5,13 +5,13 @@ import { useAuth } from "../../context/AuthContext";
 export default function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
-  if (loading) return <p>Загрузка...</p>;
+  if (loading) return <p>Loading...</p>;
 
   if (!user) {
     return (
       <div style={{ textAlign: "center", padding: "100px 20px" }}>
-        <h2>Пожалуйста, авторизуйтесь</h2>
-        <p>Чтобы увидеть профиль, нужно войти через Google.</p>
+        <h2>Please login or register</h2>
+        <p>To view the profile you need to be logged in using Google services.</p>
       </div>
     );
   }

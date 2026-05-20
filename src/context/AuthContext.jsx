@@ -16,7 +16,14 @@ export function AuthProvider({ children }) {
         return () => unsubscribe();
     }, []);
 
-    const loginWithGoogle = () => signInWithPopup(auth, googleProvider);
+    const loginWithGoogle = () => signInWithPopup(auth, googleProvider)
+      .then(result => {})
+      .catch(error => {
+        if (error.code === 'auth/popup-closed-by-user') {
+        } else {
+          console.error(error);
+        }
+      });
     const logout = () => signOut(auth);
 
     return (

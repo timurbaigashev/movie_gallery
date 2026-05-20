@@ -6,17 +6,17 @@ describe("CommentForm", () => {
         const mockAddComment = jest.fn();
         render(<CommentForm onAddComment={mockAddComment} />);
 
-        fireEvent.change(screen.getByPlaceholderText(/ваше имя/i), {
+        fireEvent.change(screen.getByPlaceholderText(/your name/i), {
             target: { name: "name", value: "Timur" }
         });
-        fireEvent.change(screen.getByPlaceholderText(/название фильма/i), {
+        fireEvent.change(screen.getByPlaceholderText(/movie title/i), {
             target: { name: "movie", value: "Inception" }
         });
-        fireEvent.change(screen.getByPlaceholderText(/ваш комментарий/i), {
+        fireEvent.change(screen.getByPlaceholderText(/your comment.../i), {
             target: { name: "comment", value: "This is a long enough comment for validation" }
         });
 
-        fireEvent.click(screen.getByText(/отправить комментарий/i));
+        fireEvent.click(screen.getByText(/leave a comment/i));
 
         expect(mockAddComment).toHaveBeenCalled();
     });

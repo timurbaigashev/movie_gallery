@@ -8,7 +8,7 @@ const mockMovies = [
     { imdbID: "3", Title: "Interstellar", Year: "2014", imdbRating: "8.7" },
 ];
 
-describe('Задача 6: Тестирование Render Props компонента', () => {
+describe('Тестирование Render Props компонента', () => {
     test('вызывает функцию children с правильными параметрами', () => {
         const renderProp = jest.fn(({ movies }) => (
             <div data-testid="movie-list">{movies.length} movies</div>

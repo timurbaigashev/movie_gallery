@@ -30,7 +30,7 @@ describe('ProtectedRoute', () => {
             </ProtectedRoute>
         );
 
-        expect(screen.getByText('Загрузка...')).toBeInTheDocument();
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
 
     test('показывает сообщение об авторизации, если user === null', () => {
@@ -42,8 +42,8 @@ describe('ProtectedRoute', () => {
             </ProtectedRoute>
         );
 
-        expect(screen.getByText('Пожалуйста, авторизуйтесь')).toBeInTheDocument();
-        expect(screen.getByText(/Чтобы увидеть профиль, нужно войти через Google/i)).toBeInTheDocument();
+        expect(screen.getByText('Please login or register')).toBeInTheDocument();
+        expect(screen.getByText(/To view the profile you need to be logged in using Google services./i)).toBeInTheDocument();
         expect(screen.queryByText('Protected Content')).not.toBeInTheDocument();
     });
 

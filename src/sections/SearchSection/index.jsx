@@ -30,7 +30,7 @@ export default function SearchSection() {
     openModal({ title });
   };
 
-  if (error) return <p style={{ color: "red", textAlign: "center" }}>Ошибка поиска: {error}</p>;
+  if (error) return <p style={{ color: "red", textAlign: "center" }}>Search error: {error}</p>;
 
   return (
     <section className={styles.section}>
@@ -79,7 +79,7 @@ export default function SearchSection() {
               ) : (
                 !loading && query && (
                   <p style={{ textAlign: "center", padding: "40px 20px", gridColumn: "1 / -1" }}>
-                    По вашему запросу ничего не найдено.
+                    Nothing was found from your query
                   </p>
                 )
               )}
