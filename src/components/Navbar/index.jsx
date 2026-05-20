@@ -52,6 +52,15 @@ const Navbar = () => {
                             {theme === "dark" ? "Dark" : "Light"}
                         </button>
 
+                        <NavLink
+                            to="/profile"
+                            className={({ isActive }) =>
+                                isActive ? `${styles.navBtn} ${styles.navBtnActive}` : styles.navBtn
+                            }
+                        >
+                            Profile
+                        </NavLink>
+
                         <LogginButton/>
                     </div>
                 </div>
