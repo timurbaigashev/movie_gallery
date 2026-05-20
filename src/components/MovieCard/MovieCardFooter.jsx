@@ -10,7 +10,7 @@ export function MovieCardFooter() {
             className={styles.commentBtn}
             onClick={openCommentModal}
         >
-            💬 Оставить комментарий
+            💬 Leave a comment
         </button>
     );
 }

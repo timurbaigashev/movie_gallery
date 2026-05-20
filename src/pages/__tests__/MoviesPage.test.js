@@ -13,7 +13,7 @@ jest.mock('../../sections/MovieSection', () => {
                 <div data-testid="movie-card" data-title="The Matrix">The Matrix</div>
 
                 <button data-testid="comment-btn">
-                    💬 Оставить комментарий
+                    💬 Leave a comment
                 </button>
 
                 <button data-testid="load-more-btn">
@@ -29,7 +29,7 @@ jest.mock('../../components/CommentModal', () => () => (
     <div data-testid="comment-modal">Comment Modal</div>
 ));
 
-describe('Задача 10: Интеграционные тесты страницы Movies', () => {
+describe('Интеграционные тесты страницы Movies', () => {
 
     const renderPage = () => render(
         <AuthProvider>

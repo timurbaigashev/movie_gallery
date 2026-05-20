@@ -6,7 +6,7 @@ export default function Profile() {
 
   return (
     <div style={{ textAlign: "center", padding: "50px" }}>
-      <h1>Мой профиль</h1>
+      <h1>My profile</h1>
       
       {user.photoURL && (
         <img 
@@ -17,11 +17,11 @@ export default function Profile() {
         />
       )}
 
-      <p><strong>Имя:</strong> {user.displayName}</p>
+      <p><strong>Name:</strong> {user.displayName}</p>
       <p><strong>Email:</strong> {user.email}</p>
 
       <button onClick={logout} style={{ marginTop: "30px", padding: "12px 24px" }}>
-        Выйти из аккаунта
+        Logout from the account
       </button>
     </div>
   );

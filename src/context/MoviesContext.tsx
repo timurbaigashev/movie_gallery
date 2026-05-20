@@ -79,7 +79,7 @@ export function MoviesProvider({ children }: Props) {
 
       setPage((prev) => prev + 1);
     } catch (err) {
-      console.error("Ошибка загрузки фильмов:", err);
+      console.error("Error while loading movies:", err);
     } finally {
       setLoading(false);
     }
@@ -111,7 +111,7 @@ export function MoviesProvider({ children }: Props) {
 
       setSearchResults(enriched);
     } catch (err) {
-      console.error("Ошибка поиска:", err);
+      console.error("Search error:", err);
       setSearchResults([]);
     } finally {
       setLoading(false);
@@ -143,7 +143,7 @@ export function useMovies(): MoviesContextType {
   const context = useContext(MoviesContext);
 
   if (!context) {
-    throw new Error("useMovies должен использоваться внутри MoviesProvider");
+    throw new Error("useMovies should be used inside of MoviesProvider");
   }
 
   return context;

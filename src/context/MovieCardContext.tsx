@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+// @ts-ignore
 import type { Movie } from "./MoviesContext.tsx";
 
 //Context type

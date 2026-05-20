@@ -52,8 +52,8 @@ export default function CommentsSection({ movieTitle = null }) {
         {sortedComments.length === 0 ? (
           <p style={{ color: "#aaa", textAlign: "center", padding: "30px 0" }}>
             {movieTitle
-              ? "Пока нет комментариев к этому фильму"
-              : "Пока нет ни одного комментария"}
+              ? "No comments for this movie yet"
+              : "No comments yet"}
           </p>
         ) : (
           sortedComments.map((comment) => (
